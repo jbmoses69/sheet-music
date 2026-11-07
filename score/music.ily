@@ -116,27 +116,29 @@ words = \lyricmode {
   그 때 -- 는 내 -- 가... 너 -- 무 어 -- 리 -- 석 -- 었 -- 습 -- 니 -- 다.
 }
 
-% 코드 파트
+% 코드 파트 (마디마다 정리: 1마디 = 2. , 반 마디는 4. (예: d4.:m7))
 harmonies = \chordmode {
-  % Intro
-  c2. c:maj7 a:m f g:7 c
-  % Verse 1
-  c c:maj7 a:m e:m f c d:m7 g:7 c g a:m f4. g:7 c2.
-  % Verse 2
-  c c:maj7 a:m e:m f c d:m7 g:7 c g a:m f4. g:7 c2.
-  % Chorus
-  a:m e:m f c a:m e:m f g:7 c e:7 a:m f c a:m d:m7 g:7 f4. g:7 c2.
-  % Interlude
-  a:m e:m f c d:m7 g:7
-  % Verse 3
-  c c:maj7 a:m e:m f c d:m7 g:7 c g a:m f4. g:7 c2.
-  % Bridge
-  a:m e:m f c a:m e:m f g:7 e:7 a:m f c d:m7/f g:7
-  % Chorus
-  a:m e:m f c a:m e:m f g:7 c e:7 a:m f c a:m d:m7 g:7 f4. g:7 c2.
-  % Outro
-  f c d:m7 a:m f c d:m7 g:7
-  % 나지막하게
-  f f:m c d:m7 g:7 c
+  % Intro (5)
+  c2. | c | d:m7 | g:7 | c |
+  % Verse 1 (12)
+  c2. | c | a:m | e:m | a:m7 | d:m7 | f:maj7 | g:7 | c | a:m | d4.:m7 g:7 | c2. |
+  % Verse 2 (12)
+  c2. | c | a:m | e:m | a:m7 | d:m7 | f:maj7 | g:7 | c | a:m | d4.:m7 g:7 | c2. |
+  % Chorus (16)
+  a2.:m | f | d:m7 | g | a:m | f | d:m7 | g:7 |
+  c | a:m | f | d:m7 | c | d:m7 | g:7 | c |
+  % Interlude (6)
+  a2.:m | f | d:m7 | g | d:m7 | g:7 |
+  % Verse 3 (12)
+  c2. | c | a:m | e:m | a:m7 | d:m7 | f:maj7 | g:7 | c | a:m | d4.:m7 g:7 | c2. |
+  % Bridge (16)
+  a2.:m | f | d:m7 | g | a:m | f | d:m7 | g:7 |
+  e:7 | a:m | f | c | d:m7 | f | d:m7 | g:7 |
+  % Chorus (16)
+  a2.:m | f | d:m7 | g | a:m | f | d:m7 | g:7 |
+  c | a:m | f | d:m7 | c | d:m7 | g:7 | c |
+  % Outro (8)
+  a2.:m7 | c | f:maj7 | g | a:m7 | c | f4. g | g2. |
+  % 나지막하게 (6)
+  f2. | f:m | c | d:m7 | g:7 | c |
 }
-

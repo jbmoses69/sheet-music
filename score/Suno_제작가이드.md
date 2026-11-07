@@ -11,6 +11,12 @@ female vocals, autotune, EDM, rap, trap, fast tempo
   위 Style과 아래 Lyrics를 넣으면 악보 멜로디를 따라 부르게 됩니다.
 - 업로드 없이 만들면 Suno가 멜로디를 새로 지어서 악보와 달라집니다.
 
+## 3-1. 반주(MR) 파일
+- `그때는몰랐습니다_MR.mp3` : 반주만 (피아노 아르페지오·베이스·현악·드럼, 전주/간주 하모니카)
+- `그때는몰랐습니다_MR_가이드멜로디포함.mp3` : 반주 + 멜로디(플루트) — Suno Cover 업로드나 노래 연습용
+- `그때는몰랐습니다_MR.mid` : 반주 MIDI (GarageBand·큐베이스 등에서 악기 바꾸기)
+- 다시 만들기: `python3 tools/make_mr.py music.ily <가이드 MIDI> out_mr.mid out_guide.mid`
+
 ## 4. Lyrics (가사) 칸에 붙여넣기
 ```
 [Intro - harmonica, 5 bars]
