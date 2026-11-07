@@ -14,6 +14,11 @@ Suno 음원(작사·작곡 jbmoses69)을 분석해 만든 리드시트와 반주
 - `남이되기참어렵다_MR.mid`, `..._멜로디.midi` — MIDI
 - `song_model.json` — 멜로디(16분음표 단위)·코드 원본 데이터
 
+## 남성 저음 키 (E♭ Major, 원곡보다 완전5도 아래)
+50대 남성이 편하게 부르도록 낮춘 버전. 음역 G2–G4, 중심음 G3 (원곡 D3–D5).
+- `남이되기참어렵다_악보_Eb.pdf` / `.pptx`, `..._MR_Eb.mp3`, `..._MR_멜로디포함_Eb.mp3`, `..._MR_Eb.mid`, `..._멜로디_Eb.midi`
+- 만들기: `python3 transpose.py && python3 to_lily.py song_model_Eb.json music_Eb.ily ees "E♭ Major" && lilypond score-a4-Eb.ly && python3 make_mr.py mr.mid g.mid song_model_Eb.json Eb`
+
 ## 다시 만들기
 ```
 python3 to_lily.py                     # song_model.json -> music.ily

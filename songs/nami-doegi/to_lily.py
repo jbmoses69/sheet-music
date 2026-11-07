@@ -1,7 +1,11 @@
 """song_model.json(멜로디·코드) -> music.ily (LilyPond)"""
 import json,sys,os
 D=os.path.dirname(os.path.abspath(__file__))
-M=json.load(open(os.path.join(D,'song_model.json'),encoding='utf-8'))
+MODEL=sys.argv[1] if len(sys.argv)>1 else 'song_model.json'
+OUTF=sys.argv[2] if len(sys.argv)>2 else 'music.ily'
+KEY=sys.argv[3] if len(sys.argv)>3 else 'bes'
+KEYLBL=sys.argv[4] if len(sys.argv)>4 else 'B♭ Major'
+M=json.load(open(os.path.join(D,MODEL),encoding='utf-8'))
 mel=sorted(M['mel']); bars=M['bars']; NB=len(bars)
 NAMES={0:'c',1:'des',2:'d',3:'ees',4:'e',5:'f',6:'ges',7:'g',8:'aes',9:'a',10:'bes',11:'b'}
 def pitch(m):
@@ -68,12 +72,12 @@ for b in bars:
 ily=f'''% 자동 생성: to_lily.py (song_model.json)
 \\header {{
   title = \\markup \\fontsize #3 \\bold "남이 되기 참 어렵다"
-  subtitle = "Korean Ballad · 4/4 · ♩= 81 · B♭ Major"
+  subtitle = "Korean Ballad · 4/4 · ♩= 81 · {KEYLBL}"
   composer = "작사·작곡 jbmoses69 (Suno)"
   arranger = "채보·코드 편곡: AI 분석 후 정리"
   tagline = ##f
 }}
-global = {{ \\key bes \\major \\time 4/4 \\tempo "Slow Ballad" 4 = 81 }}
+global = {{ \\key {KEY} \\major \\time 4/4 \\tempo "Slow Ballad" 4 = 81 }}
 melody = {{
   \\global
   {melody}
@@ -86,5 +90,5 @@ harmonies = \\chordmode {{
   {' '.join(ch)}
 }}
 '''
-open(os.path.join(D,'music.ily'),'w',encoding='utf-8').write(ily)
+open(os.path.join(D,OUTF),'w',encoding='utf-8').write(ily)
 print('notes',len(mel),'syllables',len(lyr),'bars',NB)

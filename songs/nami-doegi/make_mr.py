@@ -1,8 +1,10 @@
 """song_model.json -> 4/4 발라드 반주 MIDI (MR, MR+멜로디)
-사용: python3 make_mr.py out_mr.mid out_guide.mid"""
+사용: python3 make_mr.py out_mr.mid out_guide.mid [model.json] [Bb|Eb]"""
 import json,sys,os,mido
 D=os.path.dirname(os.path.abspath(__file__))
-M=json.load(open(os.path.join(D,'song_model.json'),encoding='utf-8'))
+MODEL=sys.argv[3] if len(sys.argv)>3 else 'song_model.json'
+KEYSIG=sys.argv[4] if len(sys.argv)>4 else 'Bb'
+M=json.load(open(os.path.join(D,MODEL),encoding='utf-8'))
 mel,bars=M['mel'],M['bars']; NB=len(bars)
 PPQ=480; S16=PPQ//4; BAR=16*S16; TEMPO=mido.bpm2tempo(81)
 PCN={'c':0,'d':2,'e':4,'f':5,'g':7,'a':9,'b':11}
@@ -63,7 +65,7 @@ def write(path,with_mel):
     mf=mido.MidiFile(ticks_per_beat=PPQ); tr=mido.MidiTrack(); mf.tracks.append(tr)
     tr.append(mido.MetaMessage('set_tempo',tempo=TEMPO,time=0))
     tr.append(mido.MetaMessage('time_signature',numerator=4,denominator=4,time=0))
-    tr.append(mido.MetaMessage('key_signature',key='Bb',time=0))
+    tr.append(mido.MetaMessage('key_signature',key=KEYSIG,time=0))
     for ch,prog in ((0,0),(1,33),(2,49),(4,71)): tr.append(mido.Message('program_change',channel=ch,program=prog,time=0))
     for ch,cc,v in ((0,91,55),(2,91,70),(2,7,85),(4,91,60),(1,7,100)): tr.append(mido.Message('control_change',channel=ch,control=cc,value=v,time=0))
     E=list(ev)
